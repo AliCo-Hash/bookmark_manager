@@ -8,4 +8,13 @@ describe Bookmark do
       expect(bookmarks).to include("http://www.makersacademy.com") 
     end 
   end
+
+  describe '.create' do
+    it 'add a bookmark' do
+      Bookmark.create('https://instagram.com')
+      bookmarks = Bookmark.all 
+      expect(bookmarks).to include('https://instagram.com')
+    end
+  end
 end
+

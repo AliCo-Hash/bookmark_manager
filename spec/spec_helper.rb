@@ -28,7 +28,7 @@ ENV['BOOKMARK'] = 'test'
 RSpec.configure do |config|
   config.before(:each) do
     conn = PG.connect( dbname: "bookmark_manager_test")
-    conn.exec("INSERT INTO bookmarks(id, url) VALUES(1,'http://www.makersacademy.com')")
+    conn.exec("INSERT INTO bookmarks(url) VALUES('http://www.makersacademy.com')")
   end
   config.after (:each) do 
     conn = PG.connect( dbname: "bookmark_manager_test")
