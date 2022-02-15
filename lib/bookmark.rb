@@ -1,10 +1,16 @@
 require 'pg'
+
 class Bookmark
 
   def self.all
 
     @bookmarks = []
-    conn = PG.connect( dbname: "bookmark_manager")
+    if ENV['BOOKMARK'] == 'test'
+      conn = PG.connect( dbname: "bookmark_manager_test")
+    elsif
+      conn = PG.connect( dbname: "bookmark_manager")
+    end
+    
     conn.exec( "SELECT * FROM bookmarks" ) do |result|
       result.each do |row| 
         @bookmarks << row['url']
