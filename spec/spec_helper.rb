@@ -26,6 +26,14 @@ ENV['BOOKMARK'] = 'test'
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.before(:each) do
+    conn = PG.connect( dbname: "bookmark_manager_test")
+    conn.exec("INSERT INTO bookmarks(id, url) VALUES(1,'http://www.makersacademy.com')")
+  end
+  config.after (:each) do 
+    conn = PG.connect( dbname: "bookmark_manager_test")
+    conn.exec("TRUNCATE bookmarks")
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
