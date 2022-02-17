@@ -1,0 +1,2 @@
+INSERT INTO bookmarks (title, url) VALUES('makers', '');
+DROP TABLE bookmarks') --
