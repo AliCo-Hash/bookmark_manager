@@ -16,3 +16,8 @@ As a user,
 So that I can add to a list of bookmarks,
 I would like to be able to add a new bookmark.
 ```
+```
+As a user,
+So that I can delete a bookmark from the list,
+I would like to be able to delete an existing bookmark.
+```
