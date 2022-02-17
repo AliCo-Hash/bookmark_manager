@@ -4,6 +4,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'pg'
+require 'database_helpers'
 Capybara.app = Bookmark_manager
 
 ENV['BOOKMARK'] = 'test'
@@ -26,11 +27,7 @@ ENV['BOOKMARK'] = 'test'
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.before(:each) do
-    conn = PG.connect( dbname: "bookmark_manager_test")
-    conn.exec("INSERT INTO bookmarks(url) VALUES('http://www.makersacademy.com')")
-  end
-  config.after (:each) do 
+    config.before (:each) do 
     conn = PG.connect( dbname: "bookmark_manager_test")
     conn.exec("TRUNCATE bookmarks")
   end

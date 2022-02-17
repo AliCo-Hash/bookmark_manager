@@ -2,7 +2,8 @@ require 'pg'
 
 feature 'Test viewing bookmarks' do
   scenario 'should show list of bookmarks' do
-   visit('/bookmarks')
-    expect(page).to have_content "http://www.makersacademy.com"
+    Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    visit('/bookmarks')
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')
   end
 end
