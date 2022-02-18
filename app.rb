@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-require 'bookmark'
+require_relative './lib/bookmark.rb'
 
 
 
@@ -22,12 +22,12 @@ class Bookmark_manager < Sinatra::Base
   end
 
   post '/add_bookmark' do
-    Bookmark.create(url: params[:url], title: params[:title])
+    Bookmark.create(title: params[:title], url: params[:url])
     redirect'/bookmarks'
   end
 
-  delete '/delete_bookmarks/:id' do
-    onnection = PG.connect(dbname: 'bookmark_manager_test')
+  delete '/bookmarks/:id' do
+    connection = PG.connect(dbname: 'bookmark_manager_test')
     connection.exec_params("DELETE FROM bookmarks WHERE id = $1", [params[:id]])
     redirect '/bookmarks'
   end

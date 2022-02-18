@@ -25,6 +25,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.1-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
@@ -98,6 +100,7 @@ PLATFORMS
   arm64-darwin-20
   arm64-darwin-21
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   capybara
@@ -109,9 +112,6 @@ DEPENDENCIES
   sinatra
   sinatra-contrib
   webrick
-
-RUBY VERSION
-   ruby 3.0.0p0
 
 BUNDLED WITH
    2.3.6
