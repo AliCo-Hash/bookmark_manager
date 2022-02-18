@@ -32,5 +32,14 @@ describe Bookmark do
       expect(bookmark.url).to eq 'https://instagram.com'
     end
   end
-end
 
+  describe '.delete' do
+    it 'deletes the chosen bookmark' do
+    bookmark = Bookmark.create(title: 'Instagram', url: 'https://instagram.com')
+    
+    Bookmark.delete(id: bookmark.id)
+
+    expect(Bookmark.all.length).to eq 0
+    end
+  end
+end
