@@ -21,3 +21,8 @@ As a user,
 So that I can delete a bookmark from the list,
 I would like to be able to delete an existing bookmark.
 ```
+```
+As a user,
+So that I can update a bookmark from the list,
+I would like to be able to update an existing bookmark.
+```

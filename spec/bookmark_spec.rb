@@ -35,11 +35,20 @@ describe Bookmark do
 
   describe '.delete' do
     it 'deletes the chosen bookmark' do
-    bookmark = Bookmark.create(title: 'Instagram', url: 'https://instagram.com')
+      bookmark = Bookmark.create(title: 'Instagram', url: 'https://instagram.com')
     
-    Bookmark.delete(id: bookmark.id)
+      Bookmark.delete(id: bookmark.id)
 
-    expect(Bookmark.all.length).to eq 0
+      expect(Bookmark.all.length).to eq 0
+    end
+  end
+
+  describe '.update' do
+    it 'updates the chosen bookmark' do
+      bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+      updated_bookmark = Bookmark.update(id: bookmark.id, title: 'Instagram', url: 'https://instagram.com')
+      
+      expect(updated_bookmark.title).to eq 'Instagram'
     end
   end
 end
